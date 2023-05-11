@@ -5,6 +5,7 @@ import com.example.movieservice.Repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -21,5 +22,14 @@ public class MovieService {
 
     public List<Movie> getAllMovies(){
         return movieRepository.getAll();
+    }
+
+    public Movie findMovieById(long id) {
+        Optional<Movie> optionalMovie = movieRepository.findById(id);
+        if (optionalMovie.isPresent()){
+            return optionalMovie.get();
+        } else {
+            throw new RuntimeException();
+        }
     }
 }
