@@ -29,4 +29,7 @@ public class MovieRepository {
                 .filter(movie -> movie.getId() == id)
                 .findFirst();
     }
+
+    public void remove(Movie deletingMovie) {
+    }
 }
