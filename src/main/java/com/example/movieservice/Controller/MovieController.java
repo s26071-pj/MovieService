@@ -24,7 +24,7 @@ public class MovieController {
 //    }
 
     @GetMapping("/FindAllMovies")
-    public ResponseEntity<List<Movie>> showAllMovies(){
+    public ResponseEntity<List<Movie>> showAllMovies() {
 //        return (ResponseEntity<List<Movie>>) this.movieService.getAllMovies();
         return ResponseEntity.ok(movieService.getAllMovies());
     }
@@ -32,16 +32,16 @@ public class MovieController {
     //finding movies by id
 
     @GetMapping("/movies/{id}")
-    public ResponseEntity<Movie> getMovieById(@PathVariable long id){
-        return ResponseEntity.ok(movieService.findMovieById(id));
+    public ResponseEntity<Movie> getMovieById(@PathVariable long id) {
+        return ResponseEntity.ok(movieService.findById(id));
     }
 
     //edp adding new movie
 
     @PostMapping("/movies")
-    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie){
-        if (movie != null){
-            movieService.save(movie);
+    public ResponseEntity<Movie> addMovie(@RequestBody Movie movie) {
+        if (movie != null) {
+            movieService.addMovie(movie);
             return ResponseEntity.ok(movie);
         } else {
             return ResponseEntity.badRequest().build();
@@ -51,7 +51,7 @@ public class MovieController {
     //updating movie
 
     @PutMapping("/movies/{id}")
-    public ResponseEntity<Movie> updateMovie(@PathVariable long id, @RequestBody Movie movie){
+    public ResponseEntity<Movie> updateMovie(@PathVariable Long id, @RequestBody Movie movie) {
         if (getMovieById(id) != null) {
             movie.setId(id);
             movieService.updateMovie(movie);
@@ -64,8 +64,8 @@ public class MovieController {
     //Deleting movie
 
     @DeleteMapping("/movies/{id}")
-    public ResponseEntity<Void> deletingMovie(@PathVariable long id){
-        if (getMovieById(id) != null){
+    public ResponseEntity<Void> deletingMovie(@PathVariable long id) {
+        if (getMovieById(id) != null) {
             movieService.deleteMovie(id);
             return ResponseEntity.noContent().build();
         } else {

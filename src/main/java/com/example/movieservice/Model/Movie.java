@@ -1,11 +1,16 @@
 package com.example.movieservice.Model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Movie {
 
-
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private MovieCategory category;
 
     public long getId() {
         return id;
@@ -23,11 +28,11 @@ public class Movie {
         this.name = name;
     }
 
-    public String getCategory() {
+    public MovieCategory getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(MovieCategory category) {
         this.category = category;
     }
 }
