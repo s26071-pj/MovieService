@@ -12,6 +12,11 @@ public class Movie {
     @Enumerated(EnumType.STRING)
     private MovieCategory category;
 
+    private boolean Avaiable;
+
+    public Movie() {
+    }
+
     public long getId() {
         return id;
     }
@@ -35,4 +40,13 @@ public class Movie {
     public void setCategory(MovieCategory category) {
         this.category = category;
     }
+
+    public boolean getAvaiable(){
+        return false;
+    }
+
+    public void setAvaiable(boolean available) {
+        Avaiable = available;
+    }
+
 }

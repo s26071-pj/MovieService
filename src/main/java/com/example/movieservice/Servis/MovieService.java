@@ -37,4 +37,10 @@ public class MovieService {
     public void deleteMovie(Long id){
         movieRepository.deleteById(id);
     }
+
+    public void changeAvaiable(Long id){
+        Movie target = findById(id);
+        target.setAvaiable(!target.getAvaiable());
+        movieRepository.save(target);
+    }
 }
