@@ -6,7 +6,6 @@ import com.example.movieservice.Repository.MovieRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -38,9 +37,9 @@ public class MovieService {
         movieRepository.deleteById(id);
     }
 
-    public void changeAvaiable(Long id){
+    public void changeAvailable(Long id){
         Movie target = findById(id);
-        target.setAvaiable(!target.getAvaiable());
+        target.setAvailable(!target.getAvailable());
         movieRepository.save(target);
     }
 }
